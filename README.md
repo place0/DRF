@@ -1,7 +1,7 @@
 # DRF
 
-1. models.py
-
+# 1. models.py
+```
 class Note(models.Model):
 	type = models.IntegerField(default=0)
 	text = models.TextField(blank=True)
@@ -9,12 +9,12 @@ class Note(models.Model):
 
 	def __str__(self):
 		return self.description
+```
+## type, text, like 변수를 지정해서 각각 게시글 종류, 내용, 좋아요 수를 저장
 
-type, text, like 변수를 지정해서 각각 게시글 종류, 내용, 좋아요 수를 저장
 
-
-2. serializer
-
+# 2. serializer
+```
 class SimpleSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Note
@@ -29,11 +29,11 @@ class CreateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Note
 		fields = ('type', 'text')
+```
+## simpleserializer, detailserializer, createserializer 생성    
 
-simpleserializer, detailserializer, createserializer 생성    
-
-3. views.py
-
+# 3. views.py
+```
 class Notes1APIView(APIView):
 	def get(self,request):
 		notes = Note.objects
@@ -78,5 +78,5 @@ class DoneNote1APIView(APIView):
 		done.save()
 		serializer = DetailSerializer(done)
 		return Response(status=status.HTTP_200_OK)
-    
-글 작성 및 수정, 삭제. 전체 목록을 보여주는 함수 작성
+```    
+## 글 작성 및 수정, 삭제. 전체 목록을 보여주는 함수 작성
