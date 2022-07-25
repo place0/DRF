@@ -36,6 +36,11 @@ class Note1APIView(APIView):
 			return Response(serializer.data, status=status.HTTP_200_OK)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+	def delete(self, request, pk):
+		note = get_object_or_404(Note, pk=pk)
+		note.delete()
+		return Response()
+
 class DoneNotes1APIView(APIView):
 	def get(self,request):
 		dones = Note.objects
