@@ -9,4 +9,4 @@ class Note(models.Model):
 	like = models.IntegerField(default=0)
 
 	def __str__(self):
-		return self.description
+		return self.text
